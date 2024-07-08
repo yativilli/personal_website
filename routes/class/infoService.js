@@ -20,6 +20,10 @@ class Info {
     static getJadeVersion(){
         return packages.dependencies.jade.toString().replace("^", "");
     }
+
+    static getDependencies(){
+        return packages.dependencies;
+    }
 }
 
 module.exports = Info

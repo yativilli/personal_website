@@ -16,11 +16,11 @@ router.get('/v/app', function (req, res, next) {
 });
 
 router.get('/v/express', function (req, res, next) {
-    res.send(inf.getExpressVersion());
+    res.send(inf.getExpressVersion);
 });
 
 router.get('/v/jade', function (req, res, next) {
-    res.send(inf.getJadeVersion());
+    res.send(inf.getJadeVersion);
 });
 
 module.exports = router;
