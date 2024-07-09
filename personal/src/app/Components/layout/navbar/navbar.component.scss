@@ -1,0 +1,36 @@
+.full-width {
+  background-color: gray;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.menu {
+  background-color: dodgerblue;
+}
+
+button {
+  margin-right: 10px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+nav {
+  background: linear-gradient(
+    135deg,
+    rgba(1, 102, 185, 0.925),
+    rgba(119, 205, 255, 0.315)
+  );
+  color: white;
+  text-align: center;
+}
+
+ul{
+    opacity: 90;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 140, 255, 0),
+      rgba(119, 205, 255, 0)
+    );
+}
