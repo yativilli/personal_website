@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title} 
+  p App Version: #{version}
+  p Express Version: #{dependencies.express.toString().replace("^", "")}
+  p Jade Version: #{dependencies.jade.toString().replace("^", "")}
