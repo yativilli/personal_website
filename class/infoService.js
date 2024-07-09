@@ -1,4 +1,4 @@
-var packages = require('../../package.json');
+var packages = require('../package.json');
 
 class Info {
    static getInfo() {

@@ -1,5 +1,5 @@
 var express = require('express');
-var inf = require('../routes/class/infoService');
+var inf = require('../class/infoService');
 var router = express.Router();
 
 /* GET home page. */

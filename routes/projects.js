@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   var data = [
     {
       "id": 1,
@@ -50,6 +50,19 @@ router.get('/', function(req, res, next) {
       "image": "https://example.com/images/chat-app.png"
     }
   ];
+  res.send(data);
+});
+
+router.get('/1', function (req, res, next) {
+  var data = {
+    "id": 1,
+    "name": "Personal Portfolio Website",
+    "description": "A personal website to showcase my projects and skills.",
+    "technologies": ["HTML", "CSS", "JavaScript"],
+    "repository": "https://github.com/username/portfolio",
+    "liveDemo": "https://username.github.io/portfolio",
+    "image": "https://example.com/images/portfolio.png"
+  };
   res.send(data);
 });
 
