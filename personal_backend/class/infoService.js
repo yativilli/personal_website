@@ -24,6 +24,10 @@ class Info {
     static getDependencies(){
         return packages.dependencies;
     }
+
+    static getAuthor(){
+        return packages.author;
+    }
 }
 
 module.exports = Info

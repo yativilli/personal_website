@@ -1,6 +1,7 @@
 {
   "name": "personal",
   "version": "0.0.0",
+  "author": "Yannick Wernle",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

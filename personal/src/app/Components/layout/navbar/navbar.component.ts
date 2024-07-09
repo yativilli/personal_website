@@ -13,17 +13,14 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
-      // browser code
       this.href = window.location.pathname;
-      console.log(this.href);
     }
   }
 
-  get(val: string) {
-
-    if (this.href.replaceAll("/", "") == val || (this.href == "/") && val == "home") {
-      return 'blue';
+  getColor(buttonName: string): string {
+    if (this.href.replaceAll("/", "") == buttonName || (this.href == "/" && buttonName == "home")) {
+      return 'rgb(120, 120, 120)';
     }
-    return 'black';
+    return 'white';
   }
 }
