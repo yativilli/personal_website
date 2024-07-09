@@ -1,25 +1,29 @@
-import { Component } from '@angular/core';
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatButton} from "@angular/material/button";
-import {MatMenu} from "@angular/material/menu";
-import {MatIcon} from "@angular/material/icon";
-import {RouterLink, RouterLinkActive} from "@angular/router";
-
+import { Component, OnInit } from '@angular/core';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [
-    MatToolbarModule,
-    MatButton,
-    MatMenu,
-    MatIcon,
-    RouterLink,
-    RouterLinkActive
-  ],
+  imports: [NgStyle],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  styleUrl: './navbar.component.scss',
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+  href: string = '';
 
+  ngOnInit(): void {
+    if (typeof window !== 'undefined') {
+      // browser code
+      this.href = window.location.pathname;
+      console.log(this.href);
+    }
+  }
+
+  get(val: string) {
+
+    if (this.href.replaceAll("/", "") == val || (this.href == "/") && val == "home") {
+      return 'blue';
+    }
+    return 'black';
+  }
 }
