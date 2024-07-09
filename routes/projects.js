@@ -66,4 +66,9 @@ router.get('/1', function (req, res, next) {
   res.send(data);
 });
 
+router.get('/:uid', function (req, res, next) {
+  res.send(req.params.uid);
+});
+
+
 module.exports = router;
