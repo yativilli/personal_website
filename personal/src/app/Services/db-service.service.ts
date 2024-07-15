@@ -22,6 +22,7 @@ export class DbService {
   }
 
   getProjectById(id: string):any  {
+    console.log(id);
     var result;
     this.http.get(this.api + '/projects/' + id).subscribe({
       next: (data) => {

@@ -33,25 +33,49 @@ export class MyProjectsDetailComponent implements OnInit {
   constructor(private dbService: DbService, private router: Router) {}
 
   data: Project = new Project();
-  id: any;
   type: string = "";
   ngOnInit(): void {
     // Get Id
-
+    this.route.paramMap.subscribe(params => {
+      this.id = params.get('id');
+    });
+    
     this.getType();
+    this.loadValues();
   }
-
+  
   private getType() {
     // Get Type
     var url = this.router.url;
     if (url.includes('details')) {
       this.data = this.dbService.getProjectById(this.id);
+      this.loadValues();
       this.type = 'detail';
     } else if (url.includes('edit')) {
       this.data = this.dbService.getProjectById(this.id);
+      this.loadValues();
       this.type = 'edit';
     } else if (url.includes('new')) {
       this.type = 'new';
     }
+  }
+  
+  id: any;
+  name: string = "A";
+  description: string = "A";
+  repository: string = "A";
+  image: string = "A";
+  in_collaboration_with: string = "";
+  purpose: string = "";
+  status: string = "";
+
+  private loadValues(){
+    this.name = this.data?.name;
+    this.description = this.data?.description;
+    this.repository = this.data?.repository;
+    this.image = this.data?.image;
+    this.in_collaboration_with = this.data?.in_collaboration_with;
+    this.purpose = this.data?.purpose;
+    this.status = this.data?.status;
   }
 }

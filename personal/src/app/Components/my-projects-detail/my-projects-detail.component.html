@@ -1,5 +1,5 @@
-<div class="center width-70">
-    <div class="center width-50">
+<div class="center">
+    <div class="center">
       <mat-card>
         <mat-card-header>
           @if(type === 'edit' || type === 'detail') {
@@ -21,32 +21,56 @@
             @if(type === 'edit'){
             <mat-form-field class="example-full-width">
               <mat-label>Id</mat-label>
-             <input class="form-control" [(ngModel)]="id"  name="id" matInput value="">
+             <input class="form-control" [ngModel]="this.id"  name="id" matInput value="">
             </mat-form-field>
             }
   
             <mat-form-field class="example-full-width">
-              <mat-label>Title</mat-label>
-             <input class="form-control" [(ngModel)]="id"  name="id" matInput value="">
+              <mat-label>Name</mat-label>
+             <input class="form-control" [ngModel]="this.name"  name="name" matInput value="">
             </mat-form-field>
   
             <mat-form-field class="example-full-width">
               <mat-label>Description</mat-label>
-             <input class="form-control" [(ngModel)]="id"  name="id" matInput value="">
+             <input class="form-control" [ngModel]="description" name="description" matInput value="">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Repository</mat-label>
+             <input class="form-control" [ngModel]="repository" name="repository" matInput value="">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Image</mat-label>
+             <input class="form-control" [ngModel]="image" name="image" matInput value="">
             </mat-form-field>
   
+            <mat-form-field class="example-full-width">
+              <mat-label>Collaboration with</mat-label>
+             <input class="form-control" [ngModel]="in_collaboration_with" name="in_collaboration_with" matInput value="">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Purpose</mat-label>
+             <input class="form-control" [ngModel]="purpose" name="purpose" matInput value="">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Status</mat-label>
+             <input class="form-control" [ngModel]="status" name="status" matInput value="">
+            </mat-form-field>
           </form>
   
   
         </mat-card-content>
         <mat-card-actions>
-          <button mat-flat-button  color="primary">
+          <button mat-flat-button  color="primary" routerLink="/projects/details/{{id}}">
             <mat-icon>save</mat-icon>
-            save
+            Save
           </button>
-          <button mat-flat-button color="primary" routerLink="/todo">
+          <button mat-flat-button color="primary" routerLink="/projects/all">
             <mat-icon>cancel</mat-icon>
-            cancel
+            Cancel
           </button>
         </mat-card-actions>
       </mat-card>
