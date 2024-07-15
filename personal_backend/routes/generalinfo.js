@@ -1,6 +1,5 @@
 var express = require('express');
 var inf = require('../class/infoService');
-var db  = require('../class/dbService');
 var router = express.Router();
 
 /* GET General Info page. */
@@ -23,13 +22,5 @@ router.get('/v/express', function (req, res, next) {
 router.get('/v/jade', function (req, res, next) {
     res.send(inf.getJadeVersion());
 });
-
-router.get('/db',  function (req, res, next){
-    try {
-        db.queryDB(res);
-    } catch (err) {
-        res.status(500).send('Error retrieving projects data');
-    }
-})
 
 module.exports = router;
