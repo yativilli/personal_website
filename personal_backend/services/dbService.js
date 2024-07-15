@@ -11,7 +11,6 @@ class dbService {
     const pool = mariadb.createPool({ host: dbhost, user: dbuser, password: dbpassword, connectionLimit: dbconnectionLimit })
     try {
       const result = await pool.query('SELECT * FROM personal_website.projects');
-      console.log(result);
       res.send(result);
     } finally {
       pool.end();
@@ -22,7 +21,6 @@ class dbService {
     const pool = mariadb.createPool({ host: dbhost, user: dbuser, password: dbpassword, connectionLimit: dbconnectionLimit })
     try {
       const result = await pool.query('SELECT * FROM personal_website.projects WHERE id=' + id.toString());
-      console.log(result);
       res.send(result);
     } catch (err) {
       console.log(err)

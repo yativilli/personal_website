@@ -1,5 +1,5 @@
 var express = require('express');
-var db  = require('../class/dbService');
+var db  = require('../services/dbService');
 var router = express.Router();
 
 /* GET users listing. */
