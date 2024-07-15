@@ -1,0 +1,57 @@
+<div class="center width-70">
+    <div class="center width-50">
+      <mat-card>
+        <mat-card-header>
+          @if(type === 'edit' || type === 'detail') {
+          <h2>
+            <mat-icon>edit</mat-icon>
+            Details für id 
+          </h2>
+          } @else {
+          <h2>
+            <mat-icon>add</mat-icon>
+            New Todo!
+          </h2>
+          }
+        </mat-card-header>
+        <mat-card-content>
+  
+  
+          <form class="example-form">
+            @if(type === 'edit'){
+            <mat-form-field class="example-full-width">
+              <mat-label>Id</mat-label>
+             <input class="form-control" [(ngModel)]="id"  name="id" matInput value="">
+            </mat-form-field>
+            }
+  
+            <mat-form-field class="example-full-width">
+              <mat-label>Title</mat-label>
+             <input class="form-control" [(ngModel)]="id"  name="id" matInput value="">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width">
+              <mat-label>Description</mat-label>
+             <input class="form-control" [(ngModel)]="id"  name="id" matInput value="">
+            </mat-form-field>
+  
+          </form>
+  
+  
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button  color="primary">
+            <mat-icon>save</mat-icon>
+            save
+          </button>
+          <button mat-flat-button color="primary" routerLink="/todo">
+            <mat-icon>cancel</mat-icon>
+            cancel
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  
+  </div>
+  
+  
