@@ -12,8 +12,9 @@ router.get('/all',  function (req, res, next){
 })
 
 router.get('/:uid',  function (req, res, next){
+  var id = req.params.uid;
   try {
-      db.getProjectById(req.params.uid, res);
+      db.getProjectById(id, res);
   } catch (err) {
       res.status(500).send('Error retrieving projects data');
   }

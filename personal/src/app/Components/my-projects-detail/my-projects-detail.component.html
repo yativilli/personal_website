@@ -1,0 +1,98 @@
+<div class="center">
+  <div class="center">
+    <mat-card>
+      <mat-card-header>
+        @if(type === 'edit') {
+        <h2>
+          <mat-icon>edit</mat-icon>
+          Details für id
+        </h2>
+        } @else if(type == 'new'){
+        <h2>
+          <mat-icon>add</mat-icon>
+          New Todo!
+        </h2>
+        } @else{
+        <h2>
+          <mat-icon>search</mat-icon>
+          Detail!
+        </h2>
+        }
+      </mat-card-header>
+      <mat-card-content>
+
+
+        <form class="example-form">
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Id</mat-label>
+            <input class="form-control" [ngModel]="this.id" [disabled]="checkType()" name="id" matInput value="">
+          </mat-form-field>
+
+
+          <div class="upperWrapper">
+            <mat-form-field class="example-full-width">
+              <mat-label>Name</mat-label>
+              <input class="form-control" [ngModel]="this.name" [disabled]="checkType()" name="name" matInput value="">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Status</mat-label>
+              <mat-select class="form-control" [ngModel]="status" [disabled]="checkType()" name="status" matInput value="">
+                <mat-option value="Completed">Completed</mat-option>
+                <mat-option value="Planning">Planning</mat-option>
+                <mat-option value="In Progress">In Progress</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="upperWrapper">
+            <mat-form-field class="example-full-width">
+              <mat-label>Repository</mat-label>
+              <input class="form-control" [ngModel]="repository" [disabled]="checkType()" name="repository" matInput value="">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Image</mat-label>
+              <input class="form-control" [ngModel]="image" [disabled]="checkType()" name="image" matInput value="">
+            </mat-form-field>
+          </div>
+
+          <div class="upperWrapper">
+            <mat-form-field class="example-full-width">
+              <mat-label>Collaboration with</mat-label>
+              <input class="form-control" [ngModel]="in_collaboration_with" [disabled]="checkType()" name="in_collaboration_with" matInput
+                value="">
+            </mat-form-field>
+          </div>
+
+          <div class="lowerWrapper">
+            <mat-form-field class="example-full-width">
+              <mat-label>Description</mat-label>
+              <textarea  class="form-control" [ngModel]="description" name="description" [disabled]="checkType()" matInput value=""></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Purpose</mat-label>
+              <textarea  class="form-control" [ngModel]="purpose" name="purpose" [disabled]="checkType()" matInput value=""></textarea>
+            </mat-form-field>
+          </div>
+
+        </form>
+
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button color="primary" routerLink="/projects/details/{{id}}">
+          <mat-icon>save</mat-icon>
+          Save
+        </button>
+        <button mat-flat-button color="primary" routerLink="/projects">
+          <mat-icon>cancel</mat-icon>
+          Cancel
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+</div>
