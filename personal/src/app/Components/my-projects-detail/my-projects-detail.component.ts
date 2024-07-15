@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { DbService } from '../../Services/db-service.service';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { Project } from '../../DTOs/ProjectDto';
@@ -30,48 +30,63 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class MyProjectsDetailComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
 
-  constructor(private dbService: DbService, private router: Router) {}
+  constructor(private dbService: DbService, private router: Router) {
+    setTimeout(() => {
+      this.route.paramMap.subscribe((params) => {
+        setTimeout(() => {
+          this.id = params.get('id');
+          if (this.id) {
+            this.getType();
+            this.loadValues();
+          }
+        }, 0);
+      });
+    }, 1000);
+  }
 
-  data: any;
-  type: string = "";
+  data: Project = new Project();
+  type: string = '';
+
   ngOnInit(): void {
     // Get Id
-    this.route.paramMap.subscribe(params => {
-      this.id = params.get('id');
+    this.route.paramMap.subscribe((params) => {
+      setTimeout(() => {
+        this.id = params.get('id');
+        if (this.id) {
+          this.getType();
+          this.loadValues();
+        }
+      }, 0);
     });
-    
-    this.getType();
-    this.loadValues();
   }
-  
+
   private getType() {
     // Get Type
     var url = this.router.url;
     if (url.includes('details')) {
-      this.data = this.dbService.getProjectById(this.id)[0];
+      this.data = this.dbService.getAllProjects()[0]//getProjectById(this.id)[0];
       this.loadValues();
       this.type = 'detail';
     } else if (url.includes('edit')) {
-      this.data = this.dbService.getProjectById(this.id)[0];
+      this.data = this.dbService.getAllProjects()[0]//getProjectById(this.id)[0];
       this.loadValues();
       this.type = 'edit';
     } else if (url.includes('new')) {
       this.type = 'new';
     }
     this.loadValues();
-    
   }
-  id: any;
-  name: string = "";
-  description: string = "";;
-  repository: string = "";;
-  image: string = "";;
-  in_collaboration_with: string = "";;
-  purpose: string = "";;
-  status: string = "";;
-  
 
-  private loadValues(){
+  id: any;
+  name: string = '';
+  description: string = '';
+  repository: string = '';
+  image: string = '';
+  in_collaboration_with: string = '';
+  purpose: string = '';
+  status: string = '';
+
+  private loadValues() {
     this.name = this.data?.name;
     this.description = this.data?.description;
     this.repository = this.data?.repository;

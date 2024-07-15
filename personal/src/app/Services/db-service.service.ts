@@ -21,14 +21,19 @@ export class DbService {
     return this.projects;
   }
 
-  getProjectById(id: string):any  {
-    console.log(id);
-    var result;
-    this.http.get(this.api + '/projects/' + id).subscribe({
-      next: (data) => {
-        result = data;
-      },
-    });
-    return result;
+  getProjectById(id: string): any {
+    try {
+      console.log(id);
+      var result;
+      this.http.get(this.api + '/projects/' + id).subscribe({
+        next: (data) => {
+          result = data;
+        },
+      });
+      return result;
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
   }
 }
