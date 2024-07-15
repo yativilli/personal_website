@@ -14,11 +14,15 @@ class Info {
     }
 
     static getExpressVersion(){
-        return packages.dependencies.express.toString().replace("^", "");
+        return getDependencies().express.toString().replace("^", "");
     }
 
     static getJadeVersion(){
-        return packages.dependencies.jade.toString().replace("^", "");
+        return getDependencies().jade.toString().replace("^", "");
+    }
+
+    static getMariaDbVersion(){
+        return this.getDependencies().mariadb.toString().replace("^", "");
     }
 
     static getDependencies(){
@@ -28,6 +32,7 @@ class Info {
     static getAuthor(){
         return packages.author;
     }
+
 }
 
 module.exports = Info

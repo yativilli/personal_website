@@ -23,4 +23,12 @@ router.get('/v/jade', function (req, res, next) {
     res.send(inf.getJadeVersion());
 });
 
+router.get('/v/mariadb', function(req, res, next){
+    res.send(inf.getMariaDbVersion());
+});
+
+router.get('/v/dependencies', function(req, res, next) {
+    res.send(inf.getDependencies());
+});
+
 module.exports = router;
