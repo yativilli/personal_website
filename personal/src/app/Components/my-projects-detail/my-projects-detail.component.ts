@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-my-projects-detail',
@@ -23,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatCheckbox,
     FormsModule,
     ReactiveFormsModule,
+    MatSelectModule
   ],
   templateUrl: './my-projects-detail.component.html',
   styleUrl: './my-projects-detail.component.scss',
@@ -30,8 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class MyProjectsDetailComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
 
-  constructor(private dbService: DbService, private router: Router) {
-  }
+  constructor(private dbService: DbService, private router: Router) {}
 
   id: any;
   name: string = '';
@@ -62,11 +63,11 @@ export class MyProjectsDetailComponent implements OnInit {
     // Get Type
     var url = this.router.url;
     if (url.includes('details')) {
-      this.data = this.dbService.getAllProjects()[0]//getProjectById(this.id)[0];
+      this.data = this.dbService.getAllProjects()[0]; //getProjectById(this.id)[0];
       this.loadValues();
       this.type = 'detail';
     } else if (url.includes('edit')) {
-      this.data = this.dbService.getAllProjects()[0]//getProjectById(this.id)[0];
+      this.data = this.dbService.getAllProjects()[0]; //getProjectById(this.id)[0];
       this.loadValues();
       this.type = 'edit';
     } else if (url.includes('new')) {
@@ -74,7 +75,6 @@ export class MyProjectsDetailComponent implements OnInit {
     }
     this.loadValues();
   }
-
 
   private loadValues() {
     this.name = this.data?.name;
@@ -86,12 +86,18 @@ export class MyProjectsDetailComponent implements OnInit {
     this.status = this.data?.status;
   }
 
-  protected checkType(){
+  protected checkType() {
     var type = this.type;
-    if(type){
-      if(type == "edit"){ return false; }
-      if(type == "new"){ return false; }
-      if(type == "detail"){ return true; }
+    if (type) {
+      if (type == 'edit') {
+        return false;
+      }
+      if (type == 'new') {
+        return false;
+      }
+      if (type == 'detail') {
+        return true;
+      }
     }
     return false;
   }

@@ -38,7 +38,11 @@
 
             <mat-form-field class="example-full-width">
               <mat-label>Status</mat-label>
-              <input class="form-control" [ngModel]="status" [disabled]="checkType()" name="status" matInput value="">
+              <mat-select class="form-control" [ngModel]="status" [disabled]="checkType()" name="status" matInput value="">
+                <mat-option value="Completed">Completed</mat-option>
+                <mat-option value="Planning">Planning</mat-option>
+                <mat-option value="In Progress">In Progress</mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
 
@@ -65,12 +69,12 @@
           <div class="lowerWrapper">
             <mat-form-field class="example-full-width">
               <mat-label>Description</mat-label>
-              <input class="form-control" [ngModel]="description" name="description" [disabled]="checkType()" matInput value="">
+              <textarea  class="form-control" [ngModel]="description" name="description" [disabled]="checkType()" matInput value=""></textarea>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Purpose</mat-label>
-              <input class="form-control" [ngModel]="purpose" name="purpose" [disabled]="checkType()" matInput value="">
+              <textarea  class="form-control" [ngModel]="purpose" name="purpose" [disabled]="checkType()" matInput value=""></textarea>
             </mat-form-field>
           </div>
 
