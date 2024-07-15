@@ -31,18 +31,16 @@ export class MyProjectsDetailComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
 
   constructor(private dbService: DbService, private router: Router) {
-    setTimeout(() => {
-      this.route.paramMap.subscribe((params) => {
-        setTimeout(() => {
-          this.id = params.get('id');
-          if (this.id) {
-            this.getType();
-            this.loadValues();
-          }
-        }, 0);
-      });
-    }, 1000);
   }
+
+  id: any;
+  name: string = '';
+  description: string = '';
+  repository: string = '';
+  image: string = '';
+  in_collaboration_with: string = '';
+  purpose: string = '';
+  status: string = '';
 
   data: Project = new Project();
   type: string = '';
@@ -77,14 +75,6 @@ export class MyProjectsDetailComponent implements OnInit {
     this.loadValues();
   }
 
-  id: any;
-  name: string = '';
-  description: string = '';
-  repository: string = '';
-  image: string = '';
-  in_collaboration_with: string = '';
-  purpose: string = '';
-  status: string = '';
 
   private loadValues() {
     this.name = this.data?.name;
@@ -94,5 +84,15 @@ export class MyProjectsDetailComponent implements OnInit {
     this.in_collaboration_with = this.data?.in_collaboration_with;
     this.purpose = this.data?.purpose;
     this.status = this.data?.status;
+  }
+
+  protected checkType(){
+    var type = this.type;
+    if(type){
+      if(type == "edit"){ return false; }
+      if(type == "new"){ return false; }
+      if(type == "detail"){ return true; }
+    }
+    return false;
   }
 }

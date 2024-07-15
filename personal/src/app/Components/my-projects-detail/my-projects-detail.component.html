@@ -13,79 +13,79 @@
           New Todo!
         </h2>
         } @else{
-          <h2>
-            <mat-icon>search</mat-icon>
-            Detail!
-          </h2>
+        <h2>
+          <mat-icon>search</mat-icon>
+          Detail!
+        </h2>
         }
       </mat-card-header>
       <mat-card-content>
 
 
         <form class="example-form">
-     
+
           <mat-form-field class="example-full-width">
             <mat-label>Id</mat-label>
-            <input class="form-control" [ngModel]="this.id" name="id" matInput value="">
+            <input class="form-control" [ngModel]="this.id" [disabled]="checkType()" name="id" matInput value="">
           </mat-form-field>
-      
+
 
           <div class="upperWrapper">
             <mat-form-field class="example-full-width">
               <mat-label>Name</mat-label>
-              <input class="form-control" [ngModel]="this.name" name="name" matInput value="">
+              <input class="form-control" [ngModel]="this.name" [disabled]="checkType()" name="name" matInput value="">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Status</mat-label>
-              <input class="form-control" [ngModel]="status" name="status" matInput value="">
+              <input class="form-control" [ngModel]="status" [disabled]="checkType()" name="status" matInput value="">
             </mat-form-field>
           </div>
 
           <div class="upperWrapper">
             <mat-form-field class="example-full-width">
               <mat-label>Repository</mat-label>
-              <input class="form-control" [ngModel]="repository" name="repository" matInput value="">
+              <input class="form-control" [ngModel]="repository" [disabled]="checkType()" name="repository" matInput value="">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Image</mat-label>
-              <input class="form-control" [ngModel]="image" name="image" matInput value="">
+              <input class="form-control" [ngModel]="image" [disabled]="checkType()" name="image" matInput value="">
             </mat-form-field>
           </div>
 
           <div class="upperWrapper">
-          <mat-form-field class="example-full-width">
-            <mat-label>Collaboration with</mat-label>
-            <input class="form-control" [ngModel]="in_collaboration_with" name="in_collaboration_with" matInput
-              value="">
-          </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Collaboration with</mat-label>
+              <input class="form-control" [ngModel]="in_collaboration_with" [disabled]="checkType()" name="in_collaboration_with" matInput
+                value="">
+            </mat-form-field>
           </div>
 
           <div class="lowerWrapper">
-          <mat-form-field class="example-full-width">
-            <mat-label>Description</mat-label>
-            <input class="form-control" [ngModel]="description" name="description" matInput value="">
-          </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Description</mat-label>
+              <input class="form-control" [ngModel]="description" name="description" [disabled]="checkType()" matInput value="">
+            </mat-form-field>
 
-          <mat-form-field class="example-full-width">
-            <mat-label>Purpose</mat-label>
-            <input class="form-control" [ngModel]="purpose" name="purpose" matInput value="">
-          </mat-form-field>
-        </div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Purpose</mat-label>
+              <input class="form-control" [ngModel]="purpose" name="purpose" [disabled]="checkType()" matInput value="">
+            </mat-form-field>
+          </div>
 
         </form>
 
 
       </mat-card-content>
       <mat-card-actions>
-        <button mat-flat-button color="primary">
+        <button mat-flat-button color="primary" routerLink="/projects/details/{{id}}">
           <mat-icon>save</mat-icon>
-          <a href="/projects/details{{id}}">Save</a>
+          Save
         </button>
-        <button mat-flat-button color="primary" >
+        <button mat-flat-button color="primary" routerLink="/projects">
           <mat-icon>cancel</mat-icon>
-          <a href="/projects">Cancel</a>
+          Cancel
         </button>
       </mat-card-actions>
     </mat-card>
