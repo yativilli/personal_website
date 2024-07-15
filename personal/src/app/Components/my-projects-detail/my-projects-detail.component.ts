@@ -32,7 +32,7 @@ export class MyProjectsDetailComponent implements OnInit {
 
   constructor(private dbService: DbService, private router: Router) {}
 
-  data: Project = new Project();
+  data: any;
   type: string = "";
   ngOnInit(): void {
     // Get Id
@@ -48,26 +48,28 @@ export class MyProjectsDetailComponent implements OnInit {
     // Get Type
     var url = this.router.url;
     if (url.includes('details')) {
-      this.data = this.dbService.getProjectById(this.id);
+      this.data = this.dbService.getProjectById(this.id)[0];
       this.loadValues();
       this.type = 'detail';
     } else if (url.includes('edit')) {
-      this.data = this.dbService.getProjectById(this.id);
+      this.data = this.dbService.getProjectById(this.id)[0];
       this.loadValues();
       this.type = 'edit';
     } else if (url.includes('new')) {
       this.type = 'new';
     }
+    this.loadValues();
+    
   }
-  
   id: any;
-  name: string = "A";
-  description: string = "A";
-  repository: string = "A";
-  image: string = "A";
-  in_collaboration_with: string = "";
-  purpose: string = "";
-  status: string = "";
+  name: string = "";
+  description: string = "";;
+  repository: string = "";;
+  image: string = "";;
+  in_collaboration_with: string = "";;
+  purpose: string = "";;
+  status: string = "";;
+  
 
   private loadValues(){
     this.name = this.data?.name;
