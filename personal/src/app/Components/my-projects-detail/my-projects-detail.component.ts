@@ -40,6 +40,7 @@ export class MyProjectsDetailComponent implements OnInit {
   repository: string = '';
   image: string = '';
   in_collaboration_with: string = '';
+  technology: string = '';
   purpose: string = '';
   status: string = '';
 
@@ -84,6 +85,7 @@ export class MyProjectsDetailComponent implements OnInit {
     this.in_collaboration_with = this.data?.in_collaboration_with;
     this.purpose = this.data?.purpose;
     this.status = this.data?.status;
+    this.technology = this.data?.technology;
   }
 
   protected checkType() {

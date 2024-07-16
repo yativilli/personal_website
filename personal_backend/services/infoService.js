@@ -14,11 +14,11 @@ class Info {
     }
 
     static getExpressVersion(){
-        return getDependencies().express.toString().replace("^", "");
+        return this.getDependencies().express.toString().replace("^", "");
     }
 
     static getJadeVersion(){
-        return getDependencies().jade.toString().replace("^", "");
+        return this.getDependencies().jade.toString().replace("^", "");
     }
 
     static getMariaDbVersion(){

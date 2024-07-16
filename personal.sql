@@ -12,6 +12,7 @@ CREATE TABLE `projects` (
   `repository` varchar(400) NOT NULL,
   `image` varchar(400) NOT NULL,
   `in_collaboration_with` varchar(400) NOT NULL,
+  `technology` text NOT NULL,
   `purpose` text NOT NULL,
   `status` varchar(400) NOT NULL
 );
@@ -21,18 +22,17 @@ ALTER TABLE `projects`
 
 ALTER TABLE `projects`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
-COMMIT;
 
-INSERT INTO `projects` (`id`, `name`, `description`, `repository`, `image`, `in_collaboration_with`, `purpose`, `status`) VALUES
-(1, 'Personal Portfolio', 'A personal portfolio website to showcase my projects and skills.', 'https://github.com/user/portfolio', 'https://example.com/images/portfolio.png', '', 'To showcase my work and attract potential employers.', 'Completed'),
-(2, 'E-commerce Platform', 'An e-commerce platform for buying and selling products online.', 'https://github.com/user/ecommerce', 'https://example.com/images/ecommerce.png', 'John Doe', 'To provide a user-friendly platform for online shopping.', 'In Progress'),
-(3, 'Chat Application', 'A real-time chat application with various features.', 'https://github.com/user/chatapp', 'https://example.com/images/chatapp.png', 'Jane Smith', 'To facilitate real-time communication between users.', 'Completed'),
-(4, 'Task Manager', 'A task management tool to help users keep track of their tasks.', 'https://github.com/user/taskmanager', 'https://example.com/images/taskmanager.png', '', 'To improve productivity by organizing tasks.', 'In Progress'),
-(5, 'Blog Platform', 'A platform for users to create and share blog posts.', 'https://github.com/user/blogplatform', 'https://example.com/images/blogplatform.png', 'Alex Johnson', 'To provide a space for users to express their thoughts and ideas.', 'Planning'),
-(6, 'Fitness Tracker', 'A mobile app to track fitness activities and goals.', 'https://github.com/user/fitnesstracker', 'https://example.com/images/fitnesstracker.png', '', 'To help users maintain a healthy lifestyle by tracking their fitness activities.', 'Completed'),
-(7, 'Recipe Sharing App', 'An app for users to share and discover new recipes.', 'https://github.com/user/recipesharing', 'https://example.com/images/recipesharing.png', 'Emily Davis', 'To create a community for food enthusiasts to share and discover recipes.', 'In Progress'),
-(8, 'Online Learning Platform', 'A platform for online courses and tutorials.', 'https://github.com/user/onlinelearning', 'https://example.com/images/onlinelearning.png', '', 'To provide accessible education to users worldwide.', 'Planning'),
-(9, 'Event Management System', 'A system to manage and organize events efficiently.', 'https://github.com/user/eventmanagement', 'https://example.com/images/eventmanagement.png', 'Michael Brown', 'To streamline the process of organizing and managing events.', 'Completed'),
-(10, 'Weather Forecast App', 'An app to provide weather forecasts and alerts.', 'https://github.com/user/weatherforecast', 'https://example.com/images/weatherforecast.png', '', 'To provide accurate and up-to-date weather information to users.', 'In Progress');
+INSERT INTO `projects` (`id`, `name`, `description`, `repository`, `image`, `in_collaboration_with`, `technology`, `purpose`, `status`) VALUES
+(1, 'Project Alpha', 'This is the description for Project Alpha.', 'https://github.com/user/project-alpha', 'https://example.com/images/alpha.png', 'Company A', 'JavaScript, Node.js, Express', 'To build a robust API for managing tasks.', 'Completed'),
+(2, 'Project Beta', 'This is the description for Project Beta.', 'https://github.com/user/project-beta', 'https://example.com/images/beta.png', 'Company B', 'Python, Django, PostgreSQL', 'To develop a web application for inventory management.', 'In Progress'),
+(3, 'Project Gamma', 'This is the description for Project Gamma.', 'https://github.com/user/project-gamma', 'https://example.com/images/gamma.png', 'Company C', 'Java, Spring Boot, MySQL', 'To create a microservices architecture for e-commerce.', 'In Progress'),
+(4, 'Project Delta', 'This is the description for Project Delta.', 'https://github.com/user/project-delta', 'https://example.com/images/delta.png', 'Company D', 'PHP, Laravel, MongoDB', 'To build a CMS for managing content.', 'Completed'),
+(5, 'Project Epsilon', 'This is the description for Project Epsilon.', 'https://github.com/user/project-epsilon', 'https://example.com/images/epsilon.png', 'Company E', 'Ruby, Ruby on Rails, SQLite', 'To develop a social media platform.', 'Pending'),
+(6, 'Project Zeta', 'This is the description for Project Zeta.', 'https://github.com/user/project-zeta', 'https://example.com/images/zeta.png', 'Company F', 'C#, .NET Core, SQL Server', 'To create an enterprise resource planning system.', 'Completed'),
+(7, 'Project Eta', 'This is the description for Project Eta.', 'https://github.com/user/project-eta', 'https://example.com/images/eta.png', 'Company G', 'JavaScript, React, Node.js', 'To build a single-page application for project management.', 'In Progress'),
+(8, 'Project Theta', 'This is the description for Project Theta.', 'https://github.com/user/project-theta', 'https://example.com/images/theta.png', 'Company H', 'Go, Gin, MySQL', 'To develop a high-performance API for data analytics.', 'Pending'),
+(9, 'Project Iota', 'This is the description for Project Iota.', 'https://github.com/user/project-iota', 'https://example.com/images/iota.png', 'Company I', 'Swift, iOS, Firebase', 'To create a mobile app for fitness tracking.', 'Completed'),
+(10, 'Project Kappa', 'This is the description for Project Kappa.', 'https://github.com/user/project-kappa', 'https://example.com/images/kappa.png', 'Company J', 'Kotlin, Android, Firestore', 'To develop an Android app for online education.', 'In Progress');
 
 COMMIT;

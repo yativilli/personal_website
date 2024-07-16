@@ -7,4 +7,5 @@ export class Project{
     in_collaboration_with: string = "";
     purpose!: string;
     status!: string;
+    technology!: string;
 }
