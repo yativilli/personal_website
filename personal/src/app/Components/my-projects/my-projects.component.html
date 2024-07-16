@@ -1,4 +1,5 @@
 <div class="wrapper">
+    <button mat-flat-button class="add" routerLink="/projects/new">Add Project</button>
     <div class="cardouterwrapper">
         @for (item of data; track item.id){
         <mat-card class="card" appearance="outlined">
@@ -7,27 +8,46 @@
                 <mat-card-title>{{item.name}}</mat-card-title>
                 <mat-card-subtitle>{{item.repository}}</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image src="{{item.image}}" alt="{{item.image}}">
+            <img mat-card-image src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
+                alt="{{item.image}}">
             <mat-card-content>
-                <p>
-                    {{item.description}}
-                </p>
-                @if(item.in_collaboration_with != ""){
-                <span><b>In Collaboration with</b></span>
-                <p>
-                    {{item.in_collaboration_with}}
-                </p>
-                }
+                <div>
+                    <div>
+                        <p>
+                            {{item.description}}
+                        </p>
+                    </div>
+                    <div>
+                        <span><b>Purpose</b></span>
+                        <p>
+                            {{item.purpose}}
+                        </p>
+                    </div>
+
+                    @if(item.in_collaboration_with != ""){
+                    <div>
+                            <span><b>In Collaboration with</b></span>
+                            
+                            <p>
+                                {{item.in_collaboration_with}}
+                            </p>
+                        </div>
+                    }
+
+                    <div>
+                        <span><b>Technolgies</b></span>
+                        <p>
+                            {{item.technology}}
+                        </p>
+                    </div>
+
+                </div>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-button routerLink="/projects/details/{{item.id}}">VIEW DETAILS</button>
+                <button mat-button routerLink="/projects/details/{{item.id}}">DETAILS</button>
+                <button mat-button routerLink="/projects/edit/{{item.id}}">EDIT</button>
             </mat-card-actions>
         </mat-card>
         }
     </div>
-    <a routerLink="/projects/new">New</a>
-    <br><br>
-    <a routerLink="/projects/edit/1">Edit 1</a>
-    <br><br>
-    <a routerLink="/projects/details/2">Details 2</a>
 </div>

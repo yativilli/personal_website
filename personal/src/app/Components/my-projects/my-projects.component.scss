@@ -14,8 +14,28 @@
 }
 
 .header-image{
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-image: url('https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png');
     background-size: cover;
+}
+
+mat-card-content{
+    margin: 1vh;
+}
+mat-card-actions{
+    display: flex;
+    flex-direction: row;
+    column-gap: 3%;
+    justify-content: center;
+    
+}
+
+mat-card-actions :hover{
+    color: rgb(119, 0, 255);
+}
+
+.add{
+    color:white !important;
+    background-color: rgb(119, 0, 255) !important;
 }
 
 .wrapper{
