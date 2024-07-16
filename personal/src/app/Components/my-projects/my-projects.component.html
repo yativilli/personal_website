@@ -1,6 +1,33 @@
-<p>{{data}}</p>
-<a routerLink="/projects/new">New</a>
-<br><br>
-<a routerLink="/projects/edit/1">Edit 1</a>
-<br><br>
-<a routerLink="/projects/details/2">Details 2</a>
+<div class="wrapper">
+    <div class="cardouterwrapper">
+        @for (item of data; track item.id){
+        <mat-card class="card" appearance="outlined">
+            <mat-card-header>
+                <div mat-card-avatar class="header-image"></div>
+                <mat-card-title>{{item.name}}</mat-card-title>
+                <mat-card-subtitle>{{item.repository}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="{{item.image}}" alt="{{item.image}}">
+            <mat-card-content>
+                <p>
+                    {{item.description}}
+                </p>
+                @if(item.in_collaboration_with != ""){
+                <span><b>In Collaboration with</b></span>
+                <p>
+                    {{item.in_collaboration_with}}
+                </p>
+                }
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button routerLink="/projects/details/{{item.id}}">VIEW DETAILS</button>
+            </mat-card-actions>
+        </mat-card>
+        }
+    </div>
+    <a routerLink="/projects/new">New</a>
+    <br><br>
+    <a routerLink="/projects/edit/1">Edit 1</a>
+    <br><br>
+    <a routerLink="/projects/details/2">Details 2</a>
+</div>
