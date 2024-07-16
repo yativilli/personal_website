@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
 
   getColor(buttonName: string): string {
     if (this.href.replaceAll("/", "") == buttonName || (this.href == "/" && buttonName == "home")) {
-      return 'rgb(120, 120, 120)';
+      return 'rgb(184, 181, 181)';
     }
     return 'white';
   }
