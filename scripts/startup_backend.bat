@@ -11,3 +11,4 @@ timeout 3
 start http://localhost:3000
 npm run start
 
+exit 0 

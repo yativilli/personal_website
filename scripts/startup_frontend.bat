@@ -8,3 +8,5 @@ timeout 3
 :: Run and Open Angular Frontend
 cd personal
 ng serve -o
+
+exit 0 
