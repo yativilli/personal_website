@@ -1,5 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Project } from '../DTOs/ProjectDto';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,6 @@ export class DbService {
   }
 
   getProjectById(id: string): any {
-    try {
       console.log(id);
       var result;
       this.http.get(this.api + '/projects/' + id).subscribe({
@@ -31,9 +31,30 @@ export class DbService {
         },
       });
       return result;
-    } catch (err) {
-      console.log(err);
-      return err;
-    }
+  }
+
+  addProject(project: Project): any{
+    this.http.post(this.api + '/projects/new', project).subscribe({
+      next: (data) => {
+        this.getAllProjects();
+      }
+    })
+  }
+
+  editProject(project: Project): any{
+    this.http.patch(this.api + '/projects/' + project.id, project).subscribe({
+      next: (data) => {
+        this.getAllProjects();
+      }
+    })
+  }
+
+  deleteProject(id: Project): any{
+    this.http.delete(this.api + '/projects/' + id).subscribe({
+      next: (data) => {
+        this.getAllProjects();
+      },
+    });
+    return this.projects;
   }
 }
