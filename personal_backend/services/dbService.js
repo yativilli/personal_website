@@ -12,6 +12,9 @@ class dbService {
     try {
       const result = await pool.query('SELECT * FROM personal_website.projects');
       res.send(result);
+    }catch(err){
+      console.log(err);
+      res.sendStatus(400);
     } finally {
       pool.end();
     }
@@ -24,6 +27,7 @@ class dbService {
       res.send(result);
     } catch (err) {
       console.log(err)
+      res.sendStatus(400)
     }
     finally {
       pool.end();
@@ -31,49 +35,57 @@ class dbService {
   }
 
   static async addProject(project, res) {
-    if (typeof project == "Project") {
-      var projectString = project.id + "," + project.name + "," + project.description + "," + project.repository + "," + project.image + "," + project.in_collaboration_with +
-      "," + project.technology + "," + project.purpose + "," + project.status;
+    if (project.id != null || project.id != undefined) {
+      var projectString = "'" + project.name.toString() + "','" + project.description.toString() + "','" + project.repository.toString() + "','" + project.image.toString() 
+      + "','" + project.in_collaboration_with.toString() + "','" + project.technology.toString() + "','" + project.purpose.toString() + "','" + project.status.toString() + "'";
       const pool = mariadb.createPool({ host: dbhost, user: dbuser, password: dbpassword, connectionLimit: dbconnectionLimit })
       try {
-        const result = await pool.query('INSERT INTO personal_website.projects (id, name, description, repository, image, in_collaboration_with, technology, purpose, status) VALUES' +
-          '(' + projectString + ');'
+        
+        const result = await pool.query('INSERT INTO personal_website.projects (name, description, repository, image, in_collaboration_with, technology, purpose, status) VALUES' +
+          "(" + projectString + ");"
         );
-        res.send(result);
+        res.sendStatus(200);
       } catch (err) {
         console.log(err)
+        res.sendStatus(500)
       }
       finally {
         pool.end();
       }
-    }
+   }else{
+    res.sendStatus(400)
+   }
   }
 
-  static async updateProject(project, res) {
-    if (typeof project == "Project") {
-      var projectString = "id=" + project.id + ", name=" + project.name + ", description=" + project.description + ", repository=" + project.repository 
-      + ", image=" + project.image + ", in_collaboration_with=" + project.in_collaboration_with +
-      ", technology=" + project.technology + ", purpose=" + project.purpose + ", status=" + project.status;
+  static async updateProject(id, project, res) {
+    if (project.id != null || project.id != undefined) {
+      var projectString = "name='" + project.name + "', description='" + project.description + "', repository='" + project.repository 
+      + "', image='" + project.image + "', in_collaboration_with='" + project.in_collaboration_with +
+      "', technology='" + project.technology + "', purpose='" + project.purpose + "', status='" + project.status + "'";
       const pool = mariadb.createPool({ host: dbhost, user: dbuser, password: dbpassword, connectionLimit: dbconnectionLimit })
       try {
-        const result = await pool.query('UPDATE personal_website.projects SET ' + projectString + 'WHERE id=' + project.id.toString());
-        res.send(result);
+        const result = await pool.query('UPDATE personal_website.projects SET ' + projectString + 'WHERE id="' + id.toString() + '";');
+        res.sendStatus(200);
       } catch (err) {
         console.log(err)
+        res.sendStatus(500)
       }
       finally {
         pool.end();
       }
+    } else{
+      res.sendStatus(400)
     }
   }
 
   static async deleteProject(id, res) {
     const pool = mariadb.createPool({ host: dbhost, user: dbuser, password: dbpassword, connectionLimit: dbconnectionLimit })
     try {
-      const result = await pool.query('DELETE FROM personal_website.projects WHERE id=' + id.toString());
-      res.send(result);
+      const result = await pool.query('DELETE FROM personal_website.projects WHERE id="' + id.toString()+ '";');
+      res.sendStatus(200);
     } catch (err) {
       console.log(err)
+      res.sendStatus(500)
     }
     finally {
       pool.end();

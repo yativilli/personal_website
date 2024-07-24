@@ -23,25 +23,20 @@ router.get('/:uid', function (req, res, next) {
 /* Create Project */
 router.post('/new', function (req, res, next) {
   var project = req.body;
-  //db.addProject(project, res);
-  res.send(project);
+  db.addProject(project, res);
 });
 
 /* Edit Project */
 router.patch('/:uid', function (req, res, next) {
   var id = req.params.uid;
   var project = req.body;
-  if (typeof project == "Project") {
-    db.updateProject(project, res);
-  }
-  res.send(project);
+    db.updateProject(id, project, res);
 });
 
 /* Delete Project */
 router.delete('/:id', function (req, res, next) {
   var id = req.params.id;
   db.deleteProject(id, res);
-  res.send(id);
 });
 
 module.exports = router;
