@@ -29,6 +29,18 @@ class dbService {
       pool.end();
     }
   }
+
+  static async addProject(project, res){
+
+  }
+
+  static async updateProject(project, res){
+    
+  }
+
+  static async deleteProject(id, res){
+
+  }
 }
 
 module.exports = dbService
