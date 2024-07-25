@@ -6,34 +6,33 @@ import { Project } from '../DTOs/ProjectDto';
   providedIn: 'root',
 })
 export class DbService {
-  constructor() {}
+  constructor() { }
 
   protected http = inject(HttpClient);
   private api: string = 'http://localhost:3000';
 
-  projects: any;
+  private projects: Project[] = [];
+  private projectById: Project[] = [];
 
   getAllProjects(): any {
     this.http.get(this.api + '/projects/all').subscribe({
       next: (data) => {
-        this.projects = data;
+        this.projects = data as Project[];
       },
     });
     return this.projects;
   }
 
-  getProjectById(id: string): any {
-      console.log(id);
-      var result;
-      this.http.get(this.api + '/projects/' + id).subscribe({
-        next: (data) => {
-          result = data;
-        },
-      });
-      return result;
+  getProjectById(id: string): Project {
+    this.http.get(this.api + '/projects/' + id).subscribe({
+      next: (data) => {
+        this.projectById = data as Project[];
+      },
+    });
+    return this.projectById[0];
   }
 
-  addProject(project: Project): any{
+  addProject(project: Project): any {
     this.http.post(this.api + '/projects/new', project).subscribe({
       next: (data) => {
         this.getAllProjects();
@@ -41,7 +40,7 @@ export class DbService {
     })
   }
 
-  editProject(project: Project): any{
+  editProject(project: Project): any {
     this.http.patch(this.api + '/projects/' + project.id, project).subscribe({
       next: (data) => {
         this.getAllProjects();
@@ -49,7 +48,7 @@ export class DbService {
     })
   }
 
-  deleteProject(id: Project): any{
+  deleteProject(id: string): any {
     this.http.delete(this.api + '/projects/' + id).subscribe({
       next: (data) => {
         this.getAllProjects();
