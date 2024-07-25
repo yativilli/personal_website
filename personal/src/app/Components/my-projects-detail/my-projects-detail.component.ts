@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-my-projects-detail',
@@ -24,7 +25,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatCheckbox,
     FormsModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    JsonPipe
   ],
   templateUrl: './my-projects-detail.component.html',
   styleUrl: './my-projects-detail.component.scss',
@@ -32,18 +34,9 @@ import { MatSelectModule } from '@angular/material/select';
 export class MyProjectsDetailComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
 
-  constructor(private dbService: DbService, private router: Router) {}
+  constructor(private dbService: DbService, private router: Router) { }
 
   id: any;
-  name: string = '';
-  description: string = '';
-  repository: string = '';
-  image: string = '';
-  in_collaboration_with: string = '';
-  technology: string = '';
-  purpose: string = '';
-  status: string = '';
-
   data: Project = new Project();
   type: string = '';
 
@@ -54,38 +47,25 @@ export class MyProjectsDetailComponent implements OnInit {
         this.id = params.get('id');
         if (this.id) {
           this.getType();
-          this.loadValues();
+          this.data = this.dbService.getProjectById(this.id);
         }
-      }, 0);
+      }, 10);
     });
+    if (this.id) {
+    }
   }
 
   private getType() {
     // Get Type
     var url = this.router.url;
     if (url.includes('details')) {
-      this.data = this.dbService.getAllProjects()[0]; //getProjectById(this.id)[0];
-      this.loadValues();
       this.type = 'detail';
     } else if (url.includes('edit')) {
-      this.data = this.dbService.getAllProjects()[0]; //getProjectById(this.id)[0];
-      this.loadValues();
       this.type = 'edit';
     } else if (url.includes('new')) {
       this.type = 'new';
     }
-    this.loadValues();
-  }
-
-  private loadValues() {
-    this.name = this.data?.name;
-    this.description = this.data?.description;
-    this.repository = this.data?.repository;
-    this.image = this.data?.image;
-    this.in_collaboration_with = this.data?.in_collaboration_with;
-    this.purpose = this.data?.purpose;
-    this.status = this.data?.status;
-    this.technology = this.data?.technology;
+    return this.type;
   }
 
   protected checkType() {
@@ -102,5 +82,14 @@ export class MyProjectsDetailComponent implements OnInit {
       }
     }
     return false;
+  }
+
+  save() {
+    alert(JSON.stringify(this.data))
+    if(this.type == 'edit'){
+
+    }else if(this.type == 'new'){
+
+    }
   }
 }
