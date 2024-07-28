@@ -20,25 +20,23 @@
         }
       </mat-card-header>
       <mat-card-content>
-
-
-        <form class="example-form">
+        <form class="example-form form-group">
 
           <mat-form-field class="example-full-width">
             <mat-label>Id</mat-label>
-            <input class="form-control" [ngModel]="this.id" [disabled]="checkType()" name="id" matInput value="">
+            <input class="form-control" [(ngModel)]="data.id" [disabled]="true" name="id" matInput value="{{this.id}}">
           </mat-form-field>
 
 
           <div class="upperWrapper">
             <mat-form-field class="example-full-width">
               <mat-label>Name</mat-label>
-              <input class="form-control" [ngModel]="this.name" [disabled]="checkType()" name="name" matInput value="">
+              <input class="form-control"[(ngModel)]="data.name" [disabled]="checkType()" name="this.name" matInput value="">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Status</mat-label>
-              <mat-select class="form-control" [ngModel]="status" [disabled]="checkType()" name="status" matInput value="">
+              <mat-select class="form-control" (selectionChange)="updateStatus($event.value)" [value]="data.status" [disabled]="checkType()" name="status" matInput value="">
                 <mat-option value="Completed">Completed</mat-option>
                 <mat-option value="Planning">Planning</mat-option>
                 <mat-option value="In Progress">In Progress</mat-option>
@@ -49,25 +47,25 @@
           <div class="upperWrapper">
             <mat-form-field class="example-full-width">
               <mat-label>Repository</mat-label>
-              <input class="form-control" [ngModel]="repository" [disabled]="checkType()" name="repository" matInput value="">
+              <input class="form-control" [(ngModel)]="data.repository" [disabled]="checkType()" name="repository" matInput value="">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Image</mat-label>
-              <input class="form-control" [ngModel]="image" [disabled]="checkType()" name="image" matInput value="">
+              <input class="form-control" [(ngModel)]="data.image" [disabled]="checkType()" name="image" matInput value="">
             </mat-form-field>
           </div>
 
           <div class="upperWrapper">
             <mat-form-field class="example-full-width">
               <mat-label>Collaboration with</mat-label>
-              <input class="form-control" [ngModel]="in_collaboration_with" [disabled]="checkType()" name="in_collaboration_with" matInput
+              <input class="form-control" [(ngModel)]="data.in_collaboration_with" [disabled]="checkType()" name="in_collaboration_with" matInput
                 value="">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Technology</mat-label>
-              <input class="form-control" [ngModel]="technology" [disabled]="checkType()" name="technology" matInput
+              <input class="form-control" [(ngModel)]="data.technology" [disabled]="checkType()" name="technology" matInput
                 value="">
             </mat-form-field>
           </div>
@@ -75,12 +73,12 @@
           <div class="lowerWrapper">
             <mat-form-field class="example-full-width">
               <mat-label>Description</mat-label>
-              <textarea  class="form-control" [ngModel]="description" name="description" [disabled]="checkType()" matInput value=""></textarea>
+              <textarea  class="form-control" [(ngModel)]="data.description" name="description" [disabled]="checkType()" matInput value=""></textarea>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Purpose</mat-label>
-              <textarea  class="form-control" [ngModel]="purpose" name="purpose" [disabled]="checkType()" matInput value=""></textarea>
+              <textarea  class="form-control" [(ngModel)]="data.purpose" name="purpose" [disabled]="checkType()" matInput value=""></textarea>
             </mat-form-field>
           </div>
 
@@ -89,7 +87,7 @@
 
       </mat-card-content>
       <mat-card-actions>
-        <button mat-flat-button color="primary" routerLink="/projects/details/{{id}}">
+        <button mat-flat-button color="primary" (click)="save()">
           <mat-icon>save</mat-icon>
           Save
         </button>
