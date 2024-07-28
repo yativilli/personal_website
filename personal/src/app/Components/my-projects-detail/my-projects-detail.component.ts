@@ -38,6 +38,7 @@ export class MyProjectsDetailComponent implements OnInit {
 
   id: any;
   data: Project = new Project();
+  status: string = "";
   type: string = '';
 
   ngOnInit(): void {
@@ -47,7 +48,7 @@ export class MyProjectsDetailComponent implements OnInit {
         this.id = params.get('id');
         if (this.id) {
           this.getType();
-          this.data = this.dbService.getProjectById(this.id);
+          this.data = this.dbService.getProjectById(this.id.toString());
         }
       }, 10);
     });
@@ -68,6 +69,10 @@ export class MyProjectsDetailComponent implements OnInit {
     return this.type;
   }
 
+  protected updateStatus(val: any){
+    this.data.status = val;
+  }
+
   protected checkType() {
     var type = this.type;
     if (type) {
@@ -85,10 +90,13 @@ export class MyProjectsDetailComponent implements OnInit {
   }
 
   save() {
-    alert(JSON.stringify(this.data))
-    if(this.type == 'edit'){
-
-    }else if(this.type == 'new'){
+    this.getType();
+    if (this.data && this.data.status != undefined) {
+      if (this.type == 'edit') {
+        this.dbService.editProject(this.data);
+      } else if (this.type == 'new') {
+        this.dbService.addProject(this.data);
+      }
 
     }
   }

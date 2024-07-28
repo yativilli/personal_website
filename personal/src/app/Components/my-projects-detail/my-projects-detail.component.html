@@ -33,12 +33,12 @@
           <div class="upperWrapper">
             <mat-form-field class="example-full-width">
               <mat-label>Name</mat-label>
-              <input class="form-control" [(ngModel)]="data.name" [disabled]="checkType()" name="this.name" matInput value="">
+              <input class="form-control"[(ngModel)]="data.name" [disabled]="checkType()" name="this.name" matInput value="">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Status</mat-label>
-              <mat-select class="form-control" [value]="data.status" [disabled]="checkType()" name="status" matInput value="">
+              <mat-select class="form-control" (selectionChange)="updateStatus($event.value)" [value]="data.status" [disabled]="checkType()" name="status" matInput value="">
                 <mat-option value="Completed">Completed</mat-option>
                 <mat-option value="Planning">Planning</mat-option>
                 <mat-option value="In Progress">In Progress</mat-option>

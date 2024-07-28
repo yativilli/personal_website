@@ -33,7 +33,8 @@ export class DbService {
   }
 
   addProject(project: Project): any {
-    this.http.post(this.api + '/projects/new', project).subscribe({
+    console.log(project);
+    this.http.post(this.api + '/projects/new', (project)).subscribe({
       next: (data) => {
         this.getAllProjects();
       }
@@ -41,7 +42,7 @@ export class DbService {
   }
 
   editProject(project: Project): any {
-    this.http.patch(this.api + '/projects/' + project.id, project).subscribe({
+    this.http.patch(this.api + '/projects/' + project.id, (project)).subscribe({
       next: (data) => {
         this.getAllProjects();
       }
