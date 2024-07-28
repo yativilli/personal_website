@@ -33,7 +33,6 @@ export class DbService {
   }
 
   addProject(project: Project): any {
-    console.log(project);
     this.http.post(this.api + '/projects/new', (project)).subscribe({
       next: (data) => {
         this.getAllProjects();

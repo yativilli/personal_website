@@ -14,18 +14,20 @@ import { Project } from '../../DTOs/ProjectDto';
   styleUrl: './my-projects.component.scss',
 })
 export class MyProjectsComponent implements OnInit {
-  constructor(protected dbService: DbService) {}
+  constructor(protected dbService: DbService) { }
 
   data: Project[] = this.dbService.getAllProjects();
   ngOnInit(): void {
     if (this.dbService) {
-      this.data = this.dbService.getAllProjects();
+      setTimeout(() => {
+        this.data = this.dbService.getAllProjects();
+      }, 50);
     }
   }
 
-  delete(project: Project){
-    var result = confirm("Do you want to delete the Project '" + project.name +"'?");
-    if(result == true){
+  delete(project: Project) {
+    var result = confirm("Do you want to delete the Project '" + project.name + "'?");
+    if (result == true) {
       this.dbService.deleteProject(project.id);
     }
   }

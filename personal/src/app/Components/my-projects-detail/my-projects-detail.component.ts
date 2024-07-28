@@ -97,7 +97,7 @@ export class MyProjectsDetailComponent implements OnInit {
       } else if (this.type == 'new') {
         this.dbService.addProject(this.data);
       }
-
     }
+    this.router.navigate(["/projects/details/" + this.data.id]);
   }
 }
