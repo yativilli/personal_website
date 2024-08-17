@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgStyle } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [NgStyle],
+  imports: [NgStyle, RouterModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })

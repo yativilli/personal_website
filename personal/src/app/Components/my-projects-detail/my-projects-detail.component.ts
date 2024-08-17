@@ -36,21 +36,23 @@ export class MyProjectsDetailComponent implements OnInit {
 
   constructor(private dbService: DbService, private router: Router) { }
 
-  id: any;
-  data: Project = new Project();
+  id: any = 0;
+  data: Project = this.dbService.getProjectById(this.id.toString());
   status: string = "";
   type: string = '';
 
   ngOnInit(): void {
     // Get Id
     this.route.paramMap.subscribe((params) => {
-      setTimeout(() => {
-        this.id = params.get('id');
-        if (this.id) {
-          this.getType();
+      this.id = params.get('id');
+      console.log(this.id);
+      this.getType();
+      if (this.dbService && this.id != undefined) {
+        setTimeout(() => {
           this.data = this.dbService.getProjectById(this.id.toString());
-        }
-      }, 10);
+          console.log(this.data);
+        }, 30);
+      }
     });
     if (this.id) {
     }
@@ -66,10 +68,12 @@ export class MyProjectsDetailComponent implements OnInit {
     } else if (url.includes('new')) {
       this.type = 'new';
     }
+
+    this.dbService.getProjectById(this.id.toString())
     return this.type;
   }
 
-  protected updateStatus(val: any){
+  protected updateStatus(val: any) {
     this.data.status = val;
   }
 

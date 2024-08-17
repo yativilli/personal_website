@@ -48,8 +48,8 @@
                 </div>
             </mat-card-content>
             <mat-card-actions>
-                <a href="/projects/details/{{item.id}}">DETAILS</a>
-                <a href="/projects/edit/{{item.id}}">EDIT</a>
+                <a routerLink="/projects/details/{{item.id}}">DETAILS</a>
+                <a routerLink="/projects/edit/{{item.id}}">EDIT</a>
                 <button mat-button (click)="delete(item)">DELETE</button>
             </mat-card-actions>
         </mat-card>

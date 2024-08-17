@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DbService } from '../../Services/db-service.service';
-import { RouterLink } from '@angular/router';
+import {  RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,7 +9,7 @@ import { Project } from '../../DTOs/ProjectDto';
 @Component({
   selector: 'app-my-projects',
   standalone: true,
-  imports: [RouterLink, MatCardModule, MatIconModule, MatButtonModule],
+  imports: [RouterModule, MatCardModule, MatIconModule, MatButtonModule],
   templateUrl: './my-projects.component.html',
   styleUrl: './my-projects.component.scss',
 })
