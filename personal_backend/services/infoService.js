@@ -1,5 +1,4 @@
 var packages = require('../package.json');
-var packagesAngular = require('../../personal/package.json');
 
 class Info {
    static getInfo() {
@@ -31,8 +30,6 @@ class Info {
         arr.push(packages.dependencies);
         arr.push(packages.devDependencies);
         
-        arr.push(packagesAngular.dependencies);
-        arr.push(packagesAngular.devDependencies);
         return (arr);
     }
 
