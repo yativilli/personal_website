@@ -1,7 +1,7 @@
 TITLE Startup Backend Personal Website
 
 ECHO Please Wait... Starting Express Backend
-cd personal_backend
+cd ..\personal_backend
 
 :: Install Dependencies
 call npm install

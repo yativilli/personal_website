@@ -1,0 +1,50 @@
+name: personal_website
+version: "0.0.0"
+services:
+  frontend:
+    container_name: frontend_personal
+    image: frontend
+    restart: always
+    ports:
+      - "4200:4200"
+    networks:
+      - personal_network
+    volumes:
+      - frontend:/frontend
+  backend:
+    container_name: backend_personal
+    image: backend
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - personal_network
+    volumes:
+      - backend:/backend
+  db:
+    container_name: db
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - "3306:3306"
+    expose:
+      - 3306
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - personal_network
+networks:
+  personal_network:
+    driver: bridge
+
+volumes:
+  frontend:
+  backend:
+  db:
+
+
