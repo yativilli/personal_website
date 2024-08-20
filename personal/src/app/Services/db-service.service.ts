@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Project } from '../DTOs/ProjectDto';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class DbService {
   constructor() { }
 
   protected http = inject(HttpClient);
-  private api: string = 'http://localhost:3000';
+  private api: string = environment.apiHost + environment.apiPort;
 
   private projects: Project[] = [];
   private projectById: Project[] = [];

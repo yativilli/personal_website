@@ -1,0 +1,10 @@
+## Frontend DEV
+FROM node:latest as build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+RUN npm install -g @angular/cli
+COPY ..\..\..\personal .
+
+CMD ["ng", "serve", "--host", "0.0.0.0"]
+EXPOSE 4200

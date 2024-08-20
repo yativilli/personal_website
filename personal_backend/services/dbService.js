@@ -1,5 +1,6 @@
 const mariadb = require('mariadb');
-const dbhost = 'localhost';
+const dbhost = process.env.SQL_HOST | 'localhost';
+const port = 3306;
 const dbuser = 'root';
 const dbpassword = '';
 const dbconnectionLimit = 5;
