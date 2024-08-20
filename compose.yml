@@ -53,6 +53,11 @@ services:
       - db:/var/lib/mysql
     networks:
       - personal_network
+  nginx:
+    container: proxy
+    image: nginx:latest
+    restart: always
+      - ~/scripts/nginx:/usr/share/nginx/
 networks:
   personal_network:
     driver: bridge
