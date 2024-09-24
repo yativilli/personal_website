@@ -16,5 +16,10 @@ Xampp must be saved in the C:\-Directory. Otherwise, the start command won't wor
 `docker run --name frontend_personal -p 4200:4200 frontend`
 
 ### MYSQL
-`docker exec -t container_name bash`
-`mysql -u user -p`
+`
+docker exec -t container_name bash
+mysql -u user -p
+`
+
+### Docker-Compose
+`docker-compose --env-file .my-env  up -d`
