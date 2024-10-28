@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:18.13
 ENV NODE_ENV=production
 WORKDIR /personal_backend
 COPY . .

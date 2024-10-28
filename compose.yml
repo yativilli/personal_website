@@ -15,8 +15,8 @@ services:
     networks:
       - personal_network
   db:
-    container_name: db
-    image: mysql:latest
+    container_name: db_personal
+    image: mariadb:latest
     restart: always
     environment:
       - MYSQL_DATABASE=${SQL_DB}
