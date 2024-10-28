@@ -1,5 +1,4 @@
 name: personal_website
-version: "0.0.0"
 services:
   frontend:
     container_name: frontend_personal
@@ -9,10 +8,10 @@ services:
       API_HOST: ${API_HOST}
       API_PORT: ${API_PORT}
     ports:
-      - "4200:80"
+      - "80:80"
     volumes:
-      - ./:/dist/personal
-      - node_modules:/home/node/app_node_modules
+      - ./personal/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./personal/nginx:/usr/share/nginx/html/nginx
     networks:
       - personal_network
   backend:
@@ -44,18 +43,9 @@ services:
       - db:/var/lib/mysql
     networks:
       - personal_network
-  reverse-proxy:
-    image: nginx:latest
-    ports:
-      - "9999:80"
-    volumes:
-      - /nginx/nginx.conf:/usr/share/nginx/conf.d/default.conf
-      - /nginx:/usr/share/nginx/html
 networks:
   personal_network:
     driver: bridge
-
 volumes:
   db:
-  node_modules:
 
