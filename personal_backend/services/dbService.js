@@ -1,17 +1,18 @@
 const mariadb = require('mariadb');
-const dbhost = process.env.SQL_HOST | 'localhost';
-const port = 3306;
-const dbuser = 'root';
-const dbpassword = 'password';
+const dbhost = process.env.SQL_HOST;
+const port = process.env.SQL_PORT;
+const dbuser = process.env.SQL_USR;
+const dbpassword = process.env.SQL_PASS;
+const db = process.env.SQL_DB;
 const dbconnectionLimit = 5;
 
 
 class dbService {
 
   static async getProjects(res) {
-    const pool = mariadb.createPool({ host: dbhost, user: dbuser, password: dbpassword, port: port, connectionLimit: dbconnectionLimit })
+    const pool = mariadb.createPool({ host: dbhost, user: dbuser, password: dbpassword, port: port, database: db, connectionLimit: dbconnectionLimit })
     try {
-      const result = await pool.query('SELECT * FROM personal_website.projects');
+      const result = await pool.query('SELECT * FROM personal_website.projects;');
       res.send(result);
     }catch(err){
       console.log(err);
@@ -22,9 +23,9 @@ class dbService {
   }
 
   static async getProjectById(id, res) {
-    const pool = mariadb.createPool({ host: dbhost, user: dbuser, password: dbpassword, connectionLimit: dbconnectionLimit })
+    const pool = mariadb.createPool({ host: dbhost, user: dbuser, password: dbpassword, port:port, database: db, connectionLimit: dbconnectionLimit })
     try {
-      const result = await pool.query('SELECT * FROM personal_website.projects WHERE id=' + id.toString());
+      const result = await pool.query('SELECT * FROM personal_website.projects WHERE id=' + id.toString() + ';');
       res.send(result);
     } catch (err) {
       console.log(err)
@@ -39,7 +40,7 @@ class dbService {
     if (project.id != null || project.id != undefined) {
       var projectString = "'" + project.name.toString() + "','" + project.description.toString() + "','" + project.repository.toString() + "','" + project.image.toString() 
       + "','" + project.in_collaboration_with.toString() + "','" + project.technology.toString() + "','" + project.purpose.toString() + "','" + project.status.toString() + "'";
-      const pool = mariadb.createPool({ host: dbhost, user: dbuser, password: dbpassword, connectionLimit: dbconnectionLimit })
+      const pool = mariadb.createPool({ host: dbhost, user: dbuser, password: dbpassword, port: port, database: db, connectionLimit: dbconnectionLimit })
       try {
         
         const result = await pool.query('INSERT INTO personal_website.projects (name, description, repository, image, in_collaboration_with, technology, purpose, status) VALUES' +

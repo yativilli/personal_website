@@ -14,6 +14,21 @@ services:
       - ./personal/nginx:/usr/share/nginx/html/nginx
     networks:
       - personal_network
+  db:
+    container_name: db
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_DATABASE=${SQL_DB}
+      - MYSQL_USER=${SQL_USR}
+      - MYSQL_PASSWORD=${SQL_PASS}
+      - MYSQL_ROOT_PASSWORD=${SQL_ROOT_PASS}  
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbs:/var/lib/mysql
+    networks:
+      - personal_network
   backend:
     container_name: backend_personal
     image: backend
@@ -28,24 +43,10 @@ services:
       - "3000:3000"
     networks:
       - personal_network
-  db:
-    container_name: db
-    image: mysql:latest
-    restart: always
-    environment:
-      - MYSQL_DATABASE=${SQL_DB}
-      - MYSQL_USER=${SQL_USR}
-      - MYSQL_PASSWORD=${SQL_PASS}
-      - MYSQL_ROOT_PASSWORD=${SQL_ROOT_PASS}
-    ports:
-      - "3306:3306"
-    volumes:
-      - db:/var/lib/mysql
-    networks:
-      - personal_network
+    depends_on:
+      - db
 networks:
   personal_network:
-    driver: bridge
 volumes:
-  db:
+  dbs:
 
