@@ -10,7 +10,7 @@ export class DbService {
   constructor() { }
 
   protected http = inject(HttpClient);
-  private api: string = environment.apiHost + environment.apiPort;
+  private api: string = (environment.apiHost + ": " + environment.apiPort) || "localhost";
 
   private projects: Project[] = [];
   private projectById: Project[] = [];

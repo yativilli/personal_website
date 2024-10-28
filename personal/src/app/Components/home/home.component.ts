@@ -18,5 +18,5 @@ import {MatButton} from "@angular/material/button";
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-
+  
 }

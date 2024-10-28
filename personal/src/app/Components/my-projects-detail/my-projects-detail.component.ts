@@ -36,7 +36,7 @@ export class MyProjectsDetailComponent implements OnInit {
 
   constructor(private dbService: DbService, private router: Router) { }
 
-  id: any = 0;
+  id: any = "0";
   data: Project = this.dbService.getProjectById(this.id.toString());
   status: string = "";
   type: string = '';
@@ -44,8 +44,7 @@ export class MyProjectsDetailComponent implements OnInit {
   ngOnInit(): void {
     // Get Id
     this.route.paramMap.subscribe((params) => {
-      this.id = params.get('id');
-      console.log(this.id);
+      this.id = params.get("id");
       this.getType();
       if (this.dbService && this.id != undefined) {
         setTimeout(() => {

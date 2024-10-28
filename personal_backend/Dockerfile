@@ -1,7 +1,7 @@
 FROM node:latest
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 WORKDIR /personal_backend
-COPY ..\..\..\personal_backend .
+COPY . .
 RUN npm install
 CMD ["npm", "run", "start"]
 EXPOSE 3000

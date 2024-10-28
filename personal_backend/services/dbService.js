@@ -2,14 +2,14 @@ const mariadb = require('mariadb');
 const dbhost = process.env.SQL_HOST | 'localhost';
 const port = 3306;
 const dbuser = 'root';
-const dbpassword = '';
+const dbpassword = 'password';
 const dbconnectionLimit = 5;
 
 
 class dbService {
 
   static async getProjects(res) {
-    const pool = mariadb.createPool({ host: dbhost, user: dbuser, password: dbpassword, connectionLimit: dbconnectionLimit })
+    const pool = mariadb.createPool({ host: dbhost, user: dbuser, password: dbpassword, port: port, connectionLimit: dbconnectionLimit })
     try {
       const result = await pool.query('SELECT * FROM personal_website.projects');
       res.send(result);

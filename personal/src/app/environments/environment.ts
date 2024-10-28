@@ -1,4 +1,4 @@
 export const environment = {
-    apiHost: '${API_HOST}',
-    apiPort: '${API_PORT}'
+    apiHost: process.env['API_HOST'] || "http://localhost",
+    apiPort: process.env['API_PORT'] || "3306"
 }
